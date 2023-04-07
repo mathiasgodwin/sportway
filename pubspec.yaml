@@ -31,7 +31,11 @@ dependencies:
   flutter_native_splash: ^2.2.19
   google_components:
     path: packages/google_components
-
+  app_preference:
+    path: packages/app_preference
+  app_storage:
+    path: packages/app_storage
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

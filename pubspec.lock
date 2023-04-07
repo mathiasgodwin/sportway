@@ -25,8 +25,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.10.0"
+  app_preference:
+    dependency: "direct main"
+    description:
+      path: "packages/app_preference"
+      relative: true
+    source: path
+    version: "0.0.1"
   app_storage:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "packages/app_storage"
       relative: true
