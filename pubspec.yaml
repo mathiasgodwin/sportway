@@ -53,24 +53,16 @@ flutter:
   assets:
     - assets/images/
 
-  fonts:
-    - family: MontserratRegular
-      fonts:
-        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
-    - family: MontserratThin
-      fonts:
-        - asset: assets/fonts/Montserrat/Montserrat-Thin.ttf
-
 flutter_native_splash:
-  image: "assets/images/Sport-grouped-icons.png"
+  image: "assets/images/Tennis.png"
   fullscreen: true
   color: "#E5E5E5"
 
 flutter_icons:
   android: true
-  image_path: "assets/images/Sport-grouped-icons.png"
+  image_path: "assets/images/Tennis.png"
   adaptive_icon_background: '#ffffff'
-  adaptive_icon_foreground: 'assets/images/Sport-grouped-icons.png'
+  adaptive_icon_foreground: 'assets/images/Tennis.png'
 
 
   

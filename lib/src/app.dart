@@ -2,11 +2,12 @@ import 'package:app_preference/app_preference.dart';
 import 'package:app_storage/app_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_components/google_components.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:sportway/configs/color_schemes.g.dart';
+import 'package:sportway/configs/theme.dart';
 import 'package:sportway/src/features/sportway/logic/bloc/auth/auth_bloc.dart';
 import 'package:sportway/src/features/sportway/view/pages/home_page.dart';
 import 'package:sportway/src/features/sportway/view/pages/login_page.dart';
@@ -51,7 +52,7 @@ class _AppBloc extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthBloc(
             context.read<GoogleComponentsRepository>(),
-          ),
+          )..add(AppAuthRequested()),
         ),
       ],
       child: AppView(),
@@ -59,16 +60,24 @@ class _AppBloc extends StatelessWidget {
   }
 }
 
-class AppView extends StatelessWidget {
+class AppView extends StatefulWidget {
   AppView({Key? key}) : super(key: key);
-  final _navigatorKey = GlobalKey<NavigatorState>();
-  NavigatorState get _navigator => _navigatorKey.currentState!;
+
+  @override
+  State<AppView> createState() => _AppViewState();
+}
+
+class _AppViewState extends State<AppView> {
+  final navigationKey = GlobalKey<NavigatorState>();
+
+  NavigatorState get _navigator => navigationKey.currentState!;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+      darkTheme: darkTheme,
+      theme: lightTheme,
+      navigatorKey: navigationKey,
       builder: (context, child) {
         return BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
@@ -76,7 +85,7 @@ class AppView extends StatelessWidget {
             final isFirstLaunch =
                 RepositoryProvider.of<AppPreference>(context).isFirstLaunch;
 
-            /// Navigate to OnboardingPage if `isfirstlaunch`
+            /// Navigate to OnboardingPage if `true`
             if (isFirstLaunch) {
               FlutterNativeSplash.remove();
               _navigator.pushAndRemoveUntil(

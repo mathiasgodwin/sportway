@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HSpace {
+  const HSpace();
+
   static Widget get s5 => const SizedBox(width: 5);
   static Widget get s10 => const SizedBox(width: 10);
   static Widget get s15 => const SizedBox(width: 15);
@@ -12,6 +14,7 @@ class HSpace {
 }
 
 class VSpace {
+  const VSpace();
   static Widget get s5 => const SizedBox(height: 5);
   static Widget get s10 => const SizedBox(height: 10);
   static Widget get s15 => const SizedBox(height: 15);

@@ -1,0 +1,77 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "sportway",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "sportway (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "sportway (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "app_preference",
+            "cwd": "packages/app_preference",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "app_preference (profile mode)",
+            "cwd": "packages/app_preference",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "app_preference (release mode)",
+            "cwd": "packages/app_preference",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "app_storage",
+            "cwd": "packages/app_storage",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "app_storage (profile mode)",
+            "cwd": "packages/app_storage",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "app_storage (release mode)",
+            "cwd": "packages/app_storage",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "firebase_exceptions",
+            "cwd": "packages/firebase_exceptions",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "google_components",
+            "cwd": "packages/google_components",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}
