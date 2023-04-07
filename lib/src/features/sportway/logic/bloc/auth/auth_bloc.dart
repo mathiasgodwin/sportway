@@ -10,7 +10,8 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc({required IGoogleComponentsRepository repository})
+  final IGoogleComponentsRepository repository;
+  AuthBloc(this.repository)
       : _repository = repository,
         super(repository.currentUser.isEmpty
             ? const AuthState.unauthenticated()

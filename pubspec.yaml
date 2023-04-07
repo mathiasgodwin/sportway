@@ -35,6 +35,7 @@ dependencies:
     path: packages/app_preference
   app_storage:
     path: packages/app_storage
+  google_sign_in: ^5.4.4
   
 dev_dependencies:
   flutter_test:
