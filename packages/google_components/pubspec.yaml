@@ -1,0 +1,34 @@
+name: google_components
+description: Dart package to manage All Google components data and domain layers.
+version: 0.0.1+1
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.15.1 <3.0.0"
+
+dependencies:
+  # Scope Packages
+
+  firebase_auth: ^4.2.5
+  firebase_core: ^2.4.1
+  google_sign_in: ^5.2.4
+  logger: ^1.1.0
+  equatable: ^2.0.3
+  app_storage:
+    path: ../app_storage
+
+
+  firebase_exceptions:
+    path: ../firebase_exceptions
+  hive: ^2.2.3
+  hive_generator: ^2.0.0
+dev_dependencies:
+  # code generators
+
+  # testing
+  build_runner: ^2.3.3
+  mockito:
+  test:
+
+  # static analysis
+  very_good_analysis:

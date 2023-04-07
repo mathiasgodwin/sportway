@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "292618865978",
+    "project_id": "sport-way-9c203",
+    "storage_bucket": "sport-way-9c203.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292618865978:android:66eab5a0e8cd88be961403",
+        "android_client_info": {
+          "package_name": "com.mathiasgodwin.sportway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292618865978-u2dc4l822sgv4imt212gqqagf27kjpg1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA40RaSD0XHnJNaiVUvTSaDjqVL59yEHOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292618865978-gla87jjta1tnm3b1qcrnsn8isle5jggc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
