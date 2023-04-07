@@ -78,6 +78,7 @@ class AppView extends StatelessWidget {
 
             /// Navigate to OnboardingPage if `isfirstlaunch`
             if (isFirstLaunch) {
+              FlutterNativeSplash.remove();
               _navigator.pushAndRemoveUntil(
                 OnboardingPage.go(),
                 (route) => false,
