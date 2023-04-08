@@ -24,7 +24,6 @@ class SignUpCubit extends Cubit<SignUpState> {
         status: Formz.validate([
           email,
           state.password,
-          // state.confirmedPassword,
         ]),
       ),
     );
@@ -36,11 +35,9 @@ class SignUpCubit extends Cubit<SignUpState> {
     emit(
       state.copyWith(
         password: password,
-        // confirmedPassword: confirmedPassword,
         status: Formz.validate([
           state.email,
           password,
-          // confirmedPassword,
         ]),
       ),
     );
