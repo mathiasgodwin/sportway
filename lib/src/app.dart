@@ -2,17 +2,13 @@ import 'package:app_preference/app_preference.dart';
 import 'package:app_storage/app_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_components/google_components.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sportway/configs/theme.dart';
 import 'package:sportway/src/features/sportway/logic/bloc/auth/auth_bloc.dart';
-import 'package:sportway/src/features/sportway/view/pages/home_page.dart';
-import 'package:sportway/src/features/sportway/view/pages/login_page.dart';
-import 'package:sportway/src/features/sportway/view/pages/onboarding_page.dart';
-import 'package:sportway/src/features/sportway/view/pages/splash_page.dart';
+import 'package:sportway/src/features/sportway/view/pages/pages.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -85,7 +81,12 @@ class _AppViewState extends State<AppView> {
             final isFirstLaunch =
                 RepositoryProvider.of<AppPreference>(context).isFirstLaunch;
 
-            /// Navigate to OnboardingPage if `true`
+            /// Check if user has setup sport interest during sign-up process
+            final hasInterest = RepositoryProvider.of<AppPreference>(context)
+                    .getBool(key: 'hasInterest') ??
+                false;
+
+            /// Navigate to OnboardingPage if [isFirstLaunch] is `true`
             if (isFirstLaunch) {
               FlutterNativeSplash.remove();
               _navigator.pushAndRemoveUntil(
@@ -96,10 +97,17 @@ class _AppViewState extends State<AppView> {
               switch (state.status) {
                 case AuthStatus.authenticated:
                   FlutterNativeSplash.remove();
-                  _navigator.pushAndRemoveUntil(
-                    HomePage.go(),
-                    (route) => false,
-                  );
+                  if (hasInterest) {
+                    _navigator.pushAndRemoveUntil(
+                      HomePage.go(),
+                      (route) => false,
+                    );
+                  } else {
+                    _navigator.pushAndRemoveUntil(
+                      SportInterestPage.go(),
+                      (route) => false,
+                    );
+                  }
                   break;
                 case AuthStatus.unauthenticated:
                   FlutterNativeSplash.remove();

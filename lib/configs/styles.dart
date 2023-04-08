@@ -25,3 +25,41 @@ class VSpace {
   static Widget get s40 => const SizedBox(height: 40);
   static Widget get s60 => const SizedBox(height: 60);
 }
+
+
+class Insets {
+  static double scale = 1;
+  static double offsetScale = 1;
+  // Regular paddings
+  static double get xs => 4 * scale;
+  static double get sm => 8 * scale;
+  static double get med => 12 * scale;
+  static double get lg => 16 * scale;
+  static double get xl => 32 * scale;
+  static double get xxl => 60 * scale;
+  // Offset, used for the edge of the window, or to separate large sections in the app
+  static double get offset => 40 * offsetScale;
+}
+
+class IconSizes {
+  static double scale = 1;
+  static double xs = 8;
+  static double sm = 16;
+  static double med = 24;
+  static double lg = 30;
+  static double xl = 40;
+}
+
+
+class FontSizes {
+  /// Provides the ability to nudge the app-wide font scale in either direction
+  static double get scale => 1;
+  static double get s10 => 10 * scale;
+  static double get s15 => 15 * scale;
+  static double get s11 => 11 * scale;
+  static double get s12 => 12 * scale;
+  static double get s14 => 14 * scale;
+  static double get s16 => 16 * scale;
+  static double get s24 => 24 * scale;
+  static double get s48 => 48 * scale;
+}
