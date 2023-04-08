@@ -62,7 +62,9 @@ class SignupForm extends StatelessWidget {
                     Column(
                       children: [
                         _NameInput(),
+                        const Gap(5),
                         _EmailInput(),
+                        const Gap(5),
                         _PasswordInput(),
                       ],
                     ),
@@ -99,35 +101,6 @@ class _EmailInput extends StatelessWidget {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                state.email.invalid
-                    ? Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Flexible(
-                            flex: 10,
-                            child: Icon(
-                              Icons.info,
-                              size: IconSizes.sm,
-                              color: theme.colorScheme.error,
-                            ),
-                          ),
-                          HSpace.s5,
-                          Flexible(
-                            flex: 10,
-                            child: Text(
-                              state.email.error!,
-                              style: TextStyle(fontSize: FontSizes.s15),
-                            ),
-                          ),
-                        ],
-                      )
-                    : const SizedBox()
-              ],
-            ),
             TextField(
               scrollPadding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom + 14 * 6),
@@ -136,13 +109,13 @@ class _EmailInput extends StatelessWidget {
                   context.read<SignUpCubit>().emailChanged(email),
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 isDense: true,
                 filled: true,
                 // contentPadding: EdgeInsets.zero,
                 labelText: 'Email Address',
                 helperText: '',
-                errorText: null,
+                errorText: state.email.invalid ? state.email.error : null,
               ),
             ),
           ],
@@ -189,7 +162,7 @@ class _PasswordInputState extends State<_PasswordInput> {
                 isDense: true,
                 labelText: 'Password',
                 helperText: '',
-                errorText: state.password.error,
+                errorText: state.password.invalid ? state.password.error : null,
               ),
             ),
           ],
@@ -214,7 +187,7 @@ class _SignUpButton extends StatelessWidget {
           children: [
             Expanded(
               flex: 9,
-              child: ElevatedButton(
+              child: FilledButton(
                 style: ElevatedButton.styleFrom(),
                 onPressed: state.status.isValidated
                     ? () async {
@@ -263,7 +236,7 @@ class _NameInput extends StatelessWidget {
                 // contentPadding: EdgeInsets.zero,
                 labelText: 'Full Name',
                 helperText: '',
-                errorText: state.errorMessage,
+                errorText: state.fullName.invalid ? state.fullName.error : null,
               ),
             ),
           ],

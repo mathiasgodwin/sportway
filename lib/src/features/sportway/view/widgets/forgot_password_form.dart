@@ -96,7 +96,7 @@ class _SubmitButton extends StatelessWidget {
         builder: (context, state) {
           return state.status.isSubmissionInProgress
               ? const Center(child: CircularProgressIndicator())
-              : ElevatedButton(
+              : FilledButton(
                   onPressed: state.status.isValidated
                       ? () =>
                           context.read<RecoverPasswordCubit>().recoverPassword()
@@ -133,7 +133,7 @@ class _EmailInput extends StatelessWidget {
                 filled: true,
                 labelText: 'Email Address',
                 helperText: '',
-                errorText: state.email.error,
+                errorText: state.email.invalid ? state.email.error : null,
               ),
             ),
           ],

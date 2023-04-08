@@ -5,15 +5,15 @@ extension UIExtension on BuildContext {
     return showDialog(
         context: this,
         barrierDismissible: true,
+        barrierColor: Colors.transparent.withOpacity(.2),
         builder: (context) {
           return WillPopScope(
             //TODO: Change barrierDismissible and onWillPop to false
             onWillPop: () => Future.value(true),
-            child: Dialog(
-              backgroundColor: Colors.transparent.withOpacity(.2),
-              child: Container(
-                height: 50,
-                width: 50,
+            child: AlertDialog(
+              content: Container(
+                height: 100,
+                width: 100,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                 ),

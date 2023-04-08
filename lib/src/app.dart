@@ -57,7 +57,7 @@ class _AppBloc extends StatelessWidget {
 }
 
 class AppView extends StatefulWidget {
-  AppView({Key? key}) : super(key: key);
+  const AppView({Key? key}) : super(key: key);
 
   @override
   State<AppView> createState() => _AppViewState();
@@ -76,6 +76,8 @@ class _AppViewState extends State<AppView> {
       navigatorKey: navigationKey,
       builder: (context, child) {
         return BlocListener<AuthBloc, AuthState>(
+          listenWhen: (previous, current) =>
+              current.status != AuthStatus.authUpdated,
           listener: (context, state) {
             /// Check if this the first launch of the app
             final isFirstLaunch =

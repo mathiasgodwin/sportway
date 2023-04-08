@@ -42,6 +42,7 @@ class LoginForm extends StatelessWidget {
                 _LoginMessage(),
                 VSpace.s35,
                 _EmailInput(),
+                const Gap(5),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,6 +53,7 @@ class LoginForm extends StatelessWidget {
                     ),
                   ],
                 ),
+                const Gap(10),
                 _ForgotPasswordLink(),
                 const Gap(15),
                 Column(
@@ -125,7 +127,6 @@ class _EmailInput extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return BlocBuilder<LoginCubit, LoginState>(
-      // buildWhen: (previous, current) => previous.email != current.email,
       builder: (context, state) {
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -142,7 +143,7 @@ class _EmailInput extends StatelessWidget {
                 // contentPadding: EdgeInsets.zero,
                 labelText: 'Email Address',
                 helperText: '',
-                errorText: state.email.error,
+                errorText: state.email.invalid ? state.email.error : null,
               ),
             ),
           ],
@@ -163,40 +164,10 @@ class _PasswordInputState extends State<_PasswordInput> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return BlocBuilder<LoginCubit, LoginState>(
-      // buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                state.password.invalid
-                    ? Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Flexible(
-                            flex: 10,
-                            child: Icon(
-                              Icons.info,
-                              size: IconSizes.sm,
-                              color: theme.colorScheme.error,
-                            ),
-                          ),
-                          HSpace.s5,
-                          Flexible(
-                            flex: 10,
-                            child: Text(
-                              state.password.error!,
-                              style: TextStyle(fontSize: FontSizes.s15),
-                            ),
-                          ),
-                        ],
-                      )
-                    : const SizedBox()
-              ],
-            ),
             TextField(
               key: const Key('loginForm_passwordInput_textField'),
               onChanged: (password) =>
@@ -217,7 +188,7 @@ class _PasswordInputState extends State<_PasswordInput> {
                 isDense: true,
                 labelText: 'Password',
                 helperText: '',
-                errorText: null,
+                errorText: state.password.invalid ? state.password.error : null,
               ),
             ),
           ],
@@ -289,14 +260,14 @@ class _LoginButton extends StatelessWidget {
             children: [
               Expanded(
                 flex: 9,
-                child: ElevatedButton(
+                child: FilledButton(
                   onPressed: state.status.isValidated
                       ? () => context.read<LoginCubit>().loginWithCredential()
                       : () {
                           context.read<LoginCubit>().validateIsEmptyFields();
                         },
-                  child: const Text('Login'),
                   style: ElevatedButton.styleFrom(),
+                  child: const Text('Login'),
                 ),
               ),
             ],
