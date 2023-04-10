@@ -23,15 +23,17 @@ class OnboardingPage extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const OnboardImage(),
-              const AppNameText(),
-              const Text('You are about to explore'),
-              VSpace.s40,
-              const AuthButtonsList(),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const OnboardImage(),
+                const AppNameText(),
+                const Text('You are about to explore'),
+                VSpace.s40,
+                const AuthButtonsList(),
+              ],
+            ),
           ),
         ),
       ),
