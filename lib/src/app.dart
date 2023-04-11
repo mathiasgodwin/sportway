@@ -12,6 +12,7 @@ import 'package:sportway/src/features/sportway/logic/bloc/auth/auth_bloc.dart';
 import 'package:sportway/src/features/sportway/logic/cubit/batch_profile_update/batch_profile_update_cubit.dart';
 import 'package:sportway/src/features/sportway/logic/cubit/bottom_bar_selector/bottom_bar_selector_cubit.dart';
 import 'package:sportway/src/features/sportway/logic/cubit/get_sport_interests/get_sport_interests_cubit.dart';
+import 'package:sportway/src/features/sportway/logic/cubit/signout/sign_out_cubit.dart';
 import 'package:sportway/src/features/sportway/view/pages/pages.dart';
 
 class App extends StatelessWidget {
@@ -64,6 +65,11 @@ class _AppBloc extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => BottomBarSelectorCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SignOutCubit(
+            context.read<GoogleComponentsRepository>(),
+          ),
         ),
       ],
       child: const AppView(),

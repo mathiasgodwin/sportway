@@ -262,11 +262,14 @@ class RemoteDataSource implements IRemoteDataSource {
 
   @override
   Future<void> signOut() async {
+    final storage = _storage;
+
     try {
       await Future.wait([
         _firebaseAuth.signOut(),
         _googleSignIn.signOut(),
       ]);
+      storage.delUser();
     } catch (_) {
       throw LogOutFailure();
     }
