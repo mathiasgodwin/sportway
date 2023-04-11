@@ -11,7 +11,10 @@ class BuddiesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Buddies'),
+      ),
       body: Center(
         child: Text('This is BuddiesPage'),
       ),

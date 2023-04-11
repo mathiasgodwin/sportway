@@ -10,17 +10,22 @@ class UserAccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          const ProfilePicture(),
-          const _KYCDetails(),
-          VSpace.s20,
-          const _InterestHeadingText(),
-          const _InterestList(),
-        ],
-      ),
-    ));
+        appBar: AppBar(
+          title: Text('Profile'),
+        ),        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                const ProfilePicture(),
+                const _KYCDetails(),
+                VSpace.s20,
+                const _InterestHeadingText(),
+                const _InterestList(),
+              ],
+            ),
+          ),
+        ));
   }
 }
 
@@ -44,9 +49,8 @@ class _ProfilePictureState extends State<ProfilePicture> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return CircleAvatar(
-      radius: 150,
-      minRadius: 70,
-      maxRadius: 200,
+      minRadius: 40,
+      maxRadius: 60,
       backgroundColor: theme.colorScheme.secondary,
       child: Text(
         nameAsAvatar(),
@@ -75,19 +79,19 @@ class _KYCDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.read<AuthBloc>().state.user;
+    final user = context.watch<AuthBloc>().state.user;
     final theme = Theme.of(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
           user.name!,
-          style: theme.textTheme.bodyMedium,
+          style: theme.textTheme.titleLarge,
         ),
         Text(
           user.email!,
           style: theme.textTheme.bodySmall?.copyWith(
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w300,
           ),
         ),
       ],
@@ -116,7 +120,7 @@ class _InterestList extends StatelessWidget {
               ));
         } else if (state.status == GetSportInterestsStatus.success) {
           return Wrap(
-            spacing: 8.0,
+            spacing: 10.0,
             runSpacing: 4.0,
             children: [
               for (int item = 0; item < state.data!.length; item++)

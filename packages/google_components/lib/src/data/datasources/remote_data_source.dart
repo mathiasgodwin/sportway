@@ -31,12 +31,22 @@ abstract class IRemoteDataSource {
   Future<String?> emailSignIn({String? email, String? password});
 
   Future<String?> updateProfile({String? fullName, String? photoUrl});
+  Future<String?> batchProfileUpdate({
+    String? fullName,
+    String? photoUrl,
+    String? email,
+    String? password,
+  });
 
   Future<String?> emailSignUp({String? email, String? password});
 
   Future<String?> passwordRecovery({String? email});
 
   Future<String?> confirmPasswordRecovery({String? code, String? newPassword});
+  Future<void> changePassword({
+    required String oldPassword,
+    required String newPassword,
+  });
   user_model.User get currentUser;
 }
 
@@ -73,8 +83,7 @@ class RemoteDataSource implements IRemoteDataSource {
     } else if (user.isEmpty) {
       return user;
     }
-    
-    
+
     return user;
   }
 
@@ -166,8 +175,6 @@ class RemoteDataSource implements IRemoteDataSource {
       logger.e(e.message);
       throw LogInWithGoogleFailure.fromCode(e.code);
     } catch (e, s) {
-      
-      
       throw const LogInWithGoogleFailure();
     }
   }
@@ -188,8 +195,7 @@ class RemoteDataSource implements IRemoteDataSource {
           photoUrl: userCredential.user!.photoURL,
         ),
       );
-      
-      
+
       return userCredential.user!.uid;
     } on FirebaseAuthException catch (e) {
       logger.e(e.message);
@@ -214,8 +220,7 @@ class RemoteDataSource implements IRemoteDataSource {
           photoUrl: userCredential.user!.photoURL,
         ),
       );
-      
-      
+
       return userCredential.user!.uid;
     } on FirebaseAuthException catch (e) {
       logger.e(e.message);
@@ -287,15 +292,51 @@ class RemoteDataSource implements IRemoteDataSource {
       throw const UpdateProfileException();
     }
   }
-}
 
-extension on User {
-  user_model.User get toUser {
-    return user_model.User(
-      id: uid,
-      email: email,
-      name: displayName,
-      photoUrl: photoURL,
-    );
+  @override
+  Future<String?> batchProfileUpdate({
+    String? fullName,
+    String? photoUrl,
+    String? email,
+    String? password,
+  }) async {
+    final currentUser = _firebaseAuth.currentUser;
+    final cachedUser = _storage.getUser();
+
+    try {
+      if (fullName != null) {
+        await currentUser!.updateDisplayName(fullName);
+      }
+
+      _storage.setUser(
+        cachedUser!.copyWith(name: fullName),
+      );
+      await currentUser!.reload();
+    } on FirebaseAuthException catch (e) {
+      throw UpdateProfileException(e.code);
+    } catch (e) {
+      throw const UpdateProfileException();
+    }
+  }
+
+  @override
+  Future<void> changePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    final currentUser = _firebaseAuth.currentUser;
+    final cachedUser = _storage.getUser();
+    try {
+      final emailAuth = EmailAuthProvider.credential(
+        email: cachedUser!.email!,
+        password: oldPassword,
+      );
+      await currentUser?.reauthenticateWithCredential(emailAuth);
+      await currentUser?.updatePassword(newPassword);
+    } on FirebaseAuthException catch (e) {
+      throw ChangePasswordException(e.code);
+    } catch (e) {
+      throw const ChangePasswordException();
+    }
   }
 }

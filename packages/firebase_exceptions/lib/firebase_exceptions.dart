@@ -225,11 +225,50 @@ class UpdateProfileException implements Exception {
 
   factory UpdateProfileException.fromCode(String code) {
     switch (code) {
-      case '':
-        return const UpdateProfileException('');
+      case 'require-recent-login':
+        return const UpdateProfileException(
+            'User needs to re-login to continue');
 
       default:
         return const UpdateProfileException();
     }
   }
+}
+
+class ChangePasswordException implements Exception {
+  const ChangePasswordException([
+    this.message = 'Could not send request, check your internet connection.',
+  ]);
+
+  /// Create an authentication message
+  /// from a firebase authentication exception code.
+  factory ChangePasswordException.fromCode(String code) {
+    switch (code) {
+      case 'invalid-email':
+        return const ChangePasswordException(
+          'Email is not valid or badly formatted.',
+        );
+      case 'user-disabled':
+        return const ChangePasswordException(
+          'This user has been disabled. Please contact support for help.',
+        );
+      case 'user-not-found':
+        return const ChangePasswordException(
+          'Email is not found, please create an account.',
+        );
+      case 'wrong-password':
+        return const ChangePasswordException(
+          'Incorrect password, please try again.',
+        );
+      case 'weak-password':
+        return const ChangePasswordException(
+          'Password too weak, try again.',
+        );
+      default:
+        return const ChangePasswordException();
+    }
+  }
+
+  /// The associated error message.
+  final String message;
 }

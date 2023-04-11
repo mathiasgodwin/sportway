@@ -29,7 +29,7 @@ class OnboardingPage extends StatelessWidget {
               children: <Widget>[
                 const OnboardImage(),
                 const AppNameText(),
-                const Text('You are about to explore'),
+                const Text('You are about to get connected'),
                 VSpace.s40,
                 const AuthButtonsList(),
               ],

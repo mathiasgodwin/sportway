@@ -9,6 +9,7 @@ import 'package:google_components/google_components.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sportway/configs/theme.dart';
 import 'package:sportway/src/features/sportway/logic/bloc/auth/auth_bloc.dart';
+import 'package:sportway/src/features/sportway/logic/cubit/batch_profile_update/batch_profile_update_cubit.dart';
 import 'package:sportway/src/features/sportway/logic/cubit/bottom_bar_selector/bottom_bar_selector_cubit.dart';
 import 'package:sportway/src/features/sportway/logic/cubit/get_sport_interests/get_sport_interests_cubit.dart';
 import 'package:sportway/src/features/sportway/view/pages/pages.dart';
@@ -63,7 +64,7 @@ class _AppBloc extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => BottomBarSelectorCubit(),
-        )
+        ),
       ],
       child: const AppView(),
     );

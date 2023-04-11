@@ -9,3 +9,5 @@ export 'firebase_phone_verify.dart';
 export 'firebase_recover_password.dart';
 export 'firebase_signout_user.dart';
 export 'firebase_update_profile.dart';
+export 'batch_profile_update_usecase.dart';
+export 'change_password_usecase.dart';

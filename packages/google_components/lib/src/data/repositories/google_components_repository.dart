@@ -166,4 +166,40 @@ class GoogleComponentsRepository implements IGoogleComponentsRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<String?> batchProfileUpdate({
+    String? fullName,
+    String? photoUrl,
+    String? email,
+    String? password,
+  }) async {
+    try {
+      await remoteDataSource.batchProfileUpdate(
+        fullName: fullName,
+        photoUrl: photoUrl,
+        email: email,
+        password: password,
+      );
+    } catch (e) {
+      logger.e(e);
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> changePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    try {
+      await remoteDataSource.changePassword(
+        oldPassword: oldPassword,
+        newPassword: newPassword,
+      );
+    } catch (e) {
+      logger.e(e);
+      rethrow;
+    }
+  }
 }

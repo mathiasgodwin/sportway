@@ -23,12 +23,22 @@ abstract class IGoogleComponentsRepository {
 
   Future<String?> emailSignIn({String? email, String? password});
 
-  Future<String?> updateProfile({String? fullName, String? photoUrl}) async {}
+  Future<String?> updateProfile({String? fullName, String? photoUrl});
+  Future<String?> batchProfileUpdate({
+    String? fullName,
+    String? photoUrl,
+    String? email,
+    String? password,
+  });
 
   Future<String?> emailSignUp({String? email, String? password});
 
   Future<String?> passwordRecovery({String? email});
 
   Future<String?> confirmPasswordRecovery({String? code, String? newPassword});
+  Future<void> changePassword({
+    required String oldPassword,
+    required String newPassword,
+  });
   User get currentUser;
 }
