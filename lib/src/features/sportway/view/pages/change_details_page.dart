@@ -37,6 +37,7 @@ class ChangeDetailsPage extends StatelessWidget {
           context.showErrorMessage(state.errorMessage ?? 'Update failed');
         } else if (state.status.isSubmissionSuccess) {
           Navigator.of(context, rootNavigator: true).pop();
+          context.read<AuthBloc>().add(AppUserUpdated());
           context.showSuccessMessage('Profile update successful');
         }
       },
