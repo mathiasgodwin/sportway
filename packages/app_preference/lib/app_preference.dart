@@ -45,13 +45,12 @@ class AppPreference implements IAppPreference {
   @override
   bool get isFirstLaunch {
     final box = Hive.box('app_preference');
-   
+
     return box.get('isFirstLaunch', defaultValue: true);
   }
 
   @override
   void get setFirstLaunch {
-    print('IsLaunchSet');
     Hive.box('app_preference').put('isFirstLaunch', false);
   }
 }

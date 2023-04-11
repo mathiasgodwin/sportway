@@ -44,9 +44,6 @@ class BatchProfileUpdateCubit extends Cubit<BatchProfileUpdateState> {
     emit(
       state.copyWith(status: FormzStatus.submissionInProgress),
     );
-    print('USER mae');
-    print(state.fullName.value);
-    print(state.fullName.invalid);
 
     try {
       await _batchProfileUpdate(
@@ -58,15 +55,11 @@ class BatchProfileUpdateCubit extends Cubit<BatchProfileUpdateState> {
         state.copyWith(status: FormzStatus.submissionSuccess),
       );
     } on UpdateProfileException catch (e, s) {
-      print(e.message);
-      print(s);
       emit(state.copyWith(
         errorMessage: e.message,
         status: FormzStatus.submissionFailure,
       ));
     } catch (e, s) {
-      print(e);
-      print(s);
       emit(state.copyWith(status: FormzStatus.submissionFailure));
     }
   }

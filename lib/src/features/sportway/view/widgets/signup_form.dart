@@ -259,7 +259,7 @@ class _SignUpMessage extends StatelessWidget {
           Text(
             "Create Account",
             style: theme.textTheme.headlineLarge?.copyWith(
-              color: theme.primaryColor,
+              color: theme.colorScheme.primary,
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),

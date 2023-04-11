@@ -113,7 +113,6 @@ class GoogleComponentsRepository implements IGoogleComponentsRepository {
     try {
       await remoteDataSource.googleSignIn();
     } catch (e, s) {
-      print(s);
       logger.e(e);
       rethrow;
     }
