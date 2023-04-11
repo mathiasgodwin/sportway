@@ -94,6 +94,7 @@ class _AppViewState extends State<AppView> {
     return MaterialApp(
       darkTheme: darkTheme,
       theme: lightTheme,
+      themeMode: ThemeMode.system,
       navigatorKey: navigationKey,
       builder: (context, child) {
         return BlocListener<AuthBloc, AuthState>(
