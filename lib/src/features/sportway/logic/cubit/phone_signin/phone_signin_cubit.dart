@@ -7,7 +7,6 @@ import 'package:google_components/google_components.dart';
 import 'package:firebase_exceptions/firebase_exceptions.dart';
 import 'package:sportway/core/utils/validators/validators.dart';
 
-
 part 'phone_signin_state.dart';
 
 class PhoneSigninCubit extends Cubit<PhoneSigninState> {

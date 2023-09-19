@@ -17,12 +17,14 @@ class SportInterestPage extends StatelessWidget {
   /// Static named route for page
   static const String route = 'SportInterest';
 
+  const SportInterestPage({super.key});
+
   /// Static method to return the widget as a PageRoute
   static Route go() => MaterialPageRoute<void>(
         builder: (_) => BlocProvider(
           create: (context) =>
               SaveSportInterestCubit(context.read<CloudStorage>()),
-          child: SportInterestPage(),
+          child: const SportInterestPage(),
         ),
       );
 
@@ -39,7 +41,7 @@ class SportInterestPage extends StatelessWidget {
                 .read<AppPreference>()
                 .setBool(key: 'hasInterest', value: true);
             await context.read<GetSportInterestsCubit>().getSportInterests();
-           await  Navigator.of(context)
+            await Navigator.of(context)
                 .pushAndRemoveUntil(HomePage.go(), (route) => false);
           }
         },
@@ -51,9 +53,9 @@ class SportInterestPage extends StatelessWidget {
           ),
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: Insets.lg),
-            child: SingleChildScrollView(
+            child: const SingleChildScrollView(
               child: Column(
-                children: const [
+                children: [
                   InterestQuestionText(),
                   Gap(10),
                   OverlineText(),
@@ -70,9 +72,7 @@ class SportInterestPage extends StatelessWidget {
 }
 
 class _ContinueButton extends StatelessWidget {
-  const _ContinueButton({
-    super.key,
-  });
+  const _ContinueButton();
 
   @override
   Widget build(BuildContext context) {
@@ -84,9 +84,9 @@ class _ContinueButton extends StatelessWidget {
               context.read<SaveSportInterestCubit>().saveSportInterest();
             }
           : null,
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const <Widget>[
+        children: <Widget>[
           Text('Continue'),
           Icon(Icons.arrow_forward),
         ],

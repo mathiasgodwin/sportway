@@ -7,8 +7,12 @@ class FirebaseConfirmPassRecovery {
 
   final IGoogleComponentsRepository _repository;
 
-  Future<String?> call(
-          {required String code, required String newPassword,}) async =>
+  Future<String?> call({
+    required String code,
+    required String newPassword,
+  }) async =>
       await _repository.confirmPasswordRecovery(
-          code: code, newPassword: newPassword,);
+        code: code,
+        newPassword: newPassword,
+      );
 }

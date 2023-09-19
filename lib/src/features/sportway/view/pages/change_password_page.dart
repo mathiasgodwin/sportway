@@ -10,13 +10,15 @@ class ChangePasswordPage extends StatelessWidget {
   /// Static named route for page
   static const String route = 'ChangePassword';
 
+  const ChangePasswordPage({super.key});
+
   /// Static method to return the widget as a PageRoute
   static Route go() => MaterialPageRoute<void>(
       builder: (_) => BlocProvider(
             create: (context) => ChangePasswordCubit(
               context.read<GoogleComponentsRepository>(),
             ),
-            child: ChangePasswordPage(),
+            child: const ChangePasswordPage(),
           ));
 
   @override

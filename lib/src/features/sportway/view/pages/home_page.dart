@@ -18,15 +18,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static List<Widget> pages = [
-    DiscoverPage(),
-    BuddiesPage(),
+    const DiscoverPage(),
+    const BuddiesPage(),
     const UserAccountPage(),
-    SettingsPage(),
+    const SettingsPage(),
   ];
   @override
   Widget build(BuildContext context) {
     //
-    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     context.select((BottomBarSelectorCubit cubit) => cubit.state);

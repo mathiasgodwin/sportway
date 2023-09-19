@@ -45,9 +45,9 @@ class ChangePasswordForm extends StatelessWidget {
                     const Gap(20),
                     _PasswordInput(),
                     const Gap(10),
-                    Column(
+                    const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         _ChangePasswordButton(),
                       ],
                     ),
@@ -137,7 +137,6 @@ class _PasswordInputState extends State<_PasswordInput> {
   bool _isObscureText = true;
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<ChangePasswordCubit, ChangePasswordState>(
       builder: (context, state) {
         return Column(

@@ -26,7 +26,6 @@ class VSpace {
   static Widget get s60 => const SizedBox(height: 60);
 }
 
-
 class Insets {
   static double scale = 1;
   static double offsetScale = 1;
@@ -49,7 +48,6 @@ class IconSizes {
   static double lg = 30;
   static double xl = 40;
 }
-
 
 class FontSizes {
   /// Provides the ability to nudge the app-wide font scale in either direction

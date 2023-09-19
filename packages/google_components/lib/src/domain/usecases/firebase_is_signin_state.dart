@@ -1,5 +1,3 @@
-
-
 import 'package:google_components/src/domain/repositories/igoogle_components_repository.dart';
 
 class FirebaseIsSignedIn {

@@ -1,6 +1,5 @@
 import 'package:formz/formz.dart';
 
-
 class Password extends FormzInput<String, String> {
   const Password.pure() : super.pure('');
   const Password.dirty([String value = '']) : super.dirty(value);

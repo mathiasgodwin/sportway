@@ -23,10 +23,11 @@ final lightTheme = ThemeData(
     ),
   ),
 );
-final darkTheme =
-    ThemeData(useMaterial3: true, 
-    primaryColor: darkColorScheme.primary,
-    colorScheme: darkColorScheme).copyWith(
+final darkTheme = ThemeData(
+        useMaterial3: true,
+        primaryColor: darkColorScheme.primary,
+        colorScheme: darkColorScheme)
+    .copyWith(
         appBarTheme: AppBarTheme(
             systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: darkColorScheme.surface,

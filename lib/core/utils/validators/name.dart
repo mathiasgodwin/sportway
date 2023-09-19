@@ -1,6 +1,5 @@
 import 'package:formz/formz.dart';
 
-
 class Name extends FormzInput<String, String> {
   const Name.pure([String value = '']) : super.pure(value);
   const Name.dirty([String value = '']) : super.dirty(value);
@@ -11,7 +10,7 @@ class Name extends FormzInput<String, String> {
 
   @override
   String? validator(String? value) {
-   String? errorMessage;
+    String? errorMessage;
 
     if (value!.isEmpty) {
       errorMessage = 'This field is required';

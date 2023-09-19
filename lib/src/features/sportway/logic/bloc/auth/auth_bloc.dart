@@ -1,6 +1,3 @@
-import 'dart:async';
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -42,10 +39,5 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   void _onUserUpdated(AppUserUpdated event, Emitter<AuthState> emit) async {
     emit(AuthState.authUpdated(_repository.currentUser));
-  }
-
-  @override
-  Future<void> close() {
-    return super.close();
   }
 }

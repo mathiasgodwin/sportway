@@ -12,8 +12,11 @@ class SettingsPage extends StatelessWidget {
   /// Static named route for page
   static const String route = 'Settings';
 
+  const SettingsPage({super.key});
+
   /// Static method to return the widget as a PageRoute
-  static Route go() => MaterialPageRoute<void>(builder: (_) => SettingsPage());
+  static Route go() =>
+      MaterialPageRoute<void>(builder: (_) => const SettingsPage());
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,7 @@ class SettingsPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Settings'),
+          title: const Text('Settings'),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),

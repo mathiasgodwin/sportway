@@ -95,7 +95,6 @@ class SignupForm extends StatelessWidget {
 class _EmailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<SignUpCubit, SignUpState>(
       builder: (context, state) {
         return Column(
@@ -134,7 +133,6 @@ class _PasswordInputState extends State<_PasswordInput> {
   bool _isObscureText = true;
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<SignUpCubit, SignUpState>(
       builder: (context, state) {
         return Column(
@@ -179,7 +177,6 @@ class _SignUpButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final canPop = Navigator.of(context).canPop();
     return BlocBuilder<SignUpCubit, SignUpState>(
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
@@ -192,6 +189,7 @@ class _SignUpButton extends StatelessWidget {
                 onPressed: state.status.isValidated
                     ? () async {
                         await context.read<SignUpCubit>().signUpFormSubmitted();
+                        // ignore: use_build_context_synchronously
                         await context
                             .read<UpdateProfileNameCubit>()
                             .updateProfileName();
@@ -215,7 +213,6 @@ class _SignUpButton extends StatelessWidget {
 class _NameInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<UpdateProfileNameCubit, UpdateProfileNameState>(
       builder: (context, state) {
         return Column(
@@ -335,7 +332,6 @@ class _SigInMessage extends StatelessWidget {
 class _TermsMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,

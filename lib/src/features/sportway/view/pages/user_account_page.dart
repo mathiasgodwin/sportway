@@ -11,8 +11,9 @@ class UserAccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Profile'),
-        ),        body: Padding(
+          title: const Text('Profile'),
+        ),
+        body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: SingleChildScrollView(
             child: Column(

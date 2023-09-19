@@ -1,6 +1,5 @@
 part of 'update_profile_cubit.dart';
 
-
 class UpdateProfileNameState extends Equatable {
   const UpdateProfileNameState({
     this.fullName = const Name.pure(),

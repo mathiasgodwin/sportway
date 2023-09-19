@@ -174,7 +174,7 @@ class RemoteDataSource implements IRemoteDataSource {
     } on FirebaseAuthException catch (e) {
       logger.e(e.message);
       throw LogInWithGoogleFailure.fromCode(e.code);
-    } catch (e, s) {
+    } catch (e) {
       throw const LogInWithGoogleFailure();
     }
   }

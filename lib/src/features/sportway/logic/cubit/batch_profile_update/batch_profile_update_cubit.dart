@@ -6,7 +6,6 @@ import 'package:firebase_exceptions/firebase_exceptions.dart';
 import 'package:sportway/core/utils/validators/email_variant.dart';
 import 'package:sportway/core/utils/validators/name_variant.dart';
 import 'package:sportway/core/utils/validators/password_variant.dart';
-import 'package:sportway/core/utils/validators/validators.dart';
 
 part 'batch_profile_update_state.dart';
 
@@ -54,12 +53,12 @@ class BatchProfileUpdateCubit extends Cubit<BatchProfileUpdateState> {
       emit(
         state.copyWith(status: FormzStatus.submissionSuccess),
       );
-    } on UpdateProfileException catch (e, s) {
+    } on UpdateProfileException catch (e) {
       emit(state.copyWith(
         errorMessage: e.message,
         status: FormzStatus.submissionFailure,
       ));
-    } catch (e, s) {
+    } catch (e) {
       emit(state.copyWith(status: FormzStatus.submissionFailure));
     }
   }

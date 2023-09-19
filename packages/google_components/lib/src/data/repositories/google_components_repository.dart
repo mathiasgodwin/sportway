@@ -112,10 +112,11 @@ class GoogleComponentsRepository implements IGoogleComponentsRepository {
   Future<String?> googleSignIn() async {
     try {
       await remoteDataSource.googleSignIn();
-    } catch (e, s) {
+    } catch (e) {
       logger.e(e);
       rethrow;
     }
+    return null;
   }
 
   @override
@@ -184,6 +185,7 @@ class GoogleComponentsRepository implements IGoogleComponentsRepository {
       logger.e(e);
       rethrow;
     }
+    return null;
   }
 
   @override

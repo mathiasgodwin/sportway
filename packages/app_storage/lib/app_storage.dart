@@ -66,7 +66,6 @@ class AppStorage implements IAppStorage {
     await _init();
   }
 
-  
   @override
   String? getString(String key, {String defValue = ''}) {
     String? value;
@@ -129,5 +128,4 @@ class AppStorage implements IAppStorage {
   void delUser() {
     Hive.box(_sportwaySecureStorageBox).delete(_userKey);
   }
-
- }
+}

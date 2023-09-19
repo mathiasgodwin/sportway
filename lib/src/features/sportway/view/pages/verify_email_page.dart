@@ -216,7 +216,7 @@ class _EmailAvatar extends StatelessWidget {
                   width: 180,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(300.0),
-                    color: Color.fromARGB(255, 221, 255, 247),
+                    color: const Color.fromARGB(255, 221, 255, 247),
                   ),
                 ),
               ),

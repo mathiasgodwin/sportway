@@ -125,7 +125,6 @@ class _SignUpMessage extends StatelessWidget {
 class _EmailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
         return Column(
@@ -162,7 +161,6 @@ class _PasswordInputState extends State<_PasswordInput> {
   bool _isObscureText = true;
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
         return Column(

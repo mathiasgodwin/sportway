@@ -4,8 +4,6 @@ import 'package:google_components/google_components.dart';
 import 'package:sportway/src/features/sportway/logic/cubit/recover_password/recover_password_cubit.dart';
 import 'package:sportway/src/features/sportway/view/widgets/widgets.dart';
 
-import '../widgets/forgot_password_form.dart';
-
 /// TODO: Finish the docs
 /// ForgotPasswordPage to...
 class ForgotPasswordPage extends StatelessWidget {

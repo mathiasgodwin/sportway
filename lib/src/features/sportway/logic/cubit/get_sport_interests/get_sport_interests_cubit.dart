@@ -7,7 +7,8 @@ part 'get_sport_interests_state.dart';
 
 class GetSportInterestsCubit extends Cubit<GetSportInterestsState> {
   final ICloudStorage repository;
-  GetSportInterestsCubit(this.repository) : super(const GetSportInterestsState());
+  GetSportInterestsCubit(this.repository)
+      : super(const GetSportInterestsState());
 
   Future<void> getSportInterests() async {
     try {

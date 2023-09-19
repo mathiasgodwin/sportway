@@ -5,15 +5,12 @@ import 'package:firebase_exceptions/firebase_exceptions.dart';
 
 part 'google_signin_state.dart';
 
-
-
-class GoogleSigninCubit extends Cubit<GoogleSigninState>{
+class GoogleSigninCubit extends Cubit<GoogleSigninState> {
   final IGoogleComponentsRepository repository;
   GoogleSigninCubit(this.repository) : super(const GoogleSigninState());
   late final _loginWithGoogle = FirebaseGoogleSignIn(repository: repository);
 
-
-    Future<void> loginWithGoogle() async {
+  Future<void> loginWithGoogle() async {
     emit(state.copyWith(status: GoogleSigninStatus.inProgress));
     try {
       await _loginWithGoogle();

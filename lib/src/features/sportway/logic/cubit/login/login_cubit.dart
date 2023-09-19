@@ -5,7 +5,6 @@ import 'package:google_components/google_components.dart';
 import 'package:sportway/core/utils/validators/validators.dart';
 import 'package:firebase_exceptions/firebase_exceptions.dart';
 
-
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {

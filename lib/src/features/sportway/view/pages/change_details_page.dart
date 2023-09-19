@@ -6,7 +6,6 @@ import 'package:sportway/configs/styles.dart';
 import 'package:sportway/core/utils/ui_extensions/ui_extensions.dart';
 import 'package:sportway/src/features/sportway/logic/bloc/auth/auth_bloc.dart';
 import 'package:sportway/src/features/sportway/logic/cubit/batch_profile_update/batch_profile_update_cubit.dart';
-import 'package:sportway/src/features/sportway/view/pages/pages.dart';
 import 'package:sportway/src/features/sportway/view/widgets/widgets.dart';
 
 /// TODO: Finish the docs
@@ -15,13 +14,15 @@ class ChangeDetailsPage extends StatelessWidget {
   /// Static named route for page
   static const String route = 'ChangeDetails';
 
+  const ChangeDetailsPage({super.key});
+
   /// Static method to return the widget as a PageRoute
   static Route go() => MaterialPageRoute<void>(
       builder: (_) => BlocProvider(
             create: (context) => BatchProfileUpdateCubit(
               context.read<GoogleComponentsRepository>(),
             ),
-            child: ChangeDetailsPage(),
+            child: const ChangeDetailsPage(),
           ));
 
   @override
@@ -76,7 +77,6 @@ class _UpdateProfileForm extends StatefulWidget {
 }
 
 class _UpdateProfileFormState extends State<_UpdateProfileForm> {
-  bool _isObscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -142,7 +142,7 @@ class _UpdateProfileFormState extends State<_UpdateProfileForm> {
                 ),
               ),
               const Gap(10),
-              Column(
+              const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -156,7 +156,7 @@ class _UpdateProfileFormState extends State<_UpdateProfileForm> {
 }
 
 class _UpdateProfileButton extends StatelessWidget {
-  _UpdateProfileButton({Key? key}) : super(key: key);
+  const _UpdateProfileButton({Key? key}) : super(key: key);
 
   final canUpdate = true;
   @override

@@ -74,8 +74,8 @@ class _ForgotPasswordMessage extends StatelessWidget {
         VSpace.s10,
         Padding(
           padding: EdgeInsets.all(Insets.med),
-          child: Column(
-            children: const <Widget>[
+          child: const Column(
+            children: <Widget>[
               Text(
                 "Enter the email address you used to create your account and we will email you a link to reset your password",
                 textAlign: TextAlign.center,
@@ -115,9 +115,7 @@ class _SubmitButton extends StatelessWidget {
 class _EmailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<RecoverPasswordCubit, RecoverPasswordState>(
-      // buildWhen: (previous, current) => previous.email != current.email,
       builder: (context, state) {
         return Column(
           mainAxisSize: MainAxisSize.min,

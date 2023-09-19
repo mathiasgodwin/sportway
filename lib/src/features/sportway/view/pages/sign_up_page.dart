@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_components/google_components.dart';
-import 'package:sportway/src/features/sportway/logic/cubit/google_signin/google_signin_cubit.dart';
 import 'package:sportway/src/features/sportway/logic/cubit/signup/signup_cubit.dart';
 import 'package:sportway/src/features/sportway/logic/cubit/update_profile_name/update_profile_name.dart';
 import 'package:sportway/src/features/sportway/view/widgets/signup_form.dart';

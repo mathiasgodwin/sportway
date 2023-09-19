@@ -19,9 +19,8 @@ class UpdateProfilePhotoCubit extends Cubit<UpdateProfilePhotoState> {
     ));
 
     try {
-      final response = await _updateProfilePhoto(photoUrl: photoUrl);
-      emit(state.copyWith(
-          status: UpdateProfilePhotoStatus.updated));
+      await _updateProfilePhoto(photoUrl: photoUrl);
+      emit(state.copyWith(status: UpdateProfilePhotoStatus.updated));
     } on UpdateProfileException catch (e) {
       emit(state.copyWith(
         errorMessage: e.message,

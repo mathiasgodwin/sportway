@@ -1,4 +1,3 @@
-
 import 'package:google_components/src/domain/repositories/igoogle_components_repository.dart';
 
 class FirebasePhoneSignIn {
@@ -9,8 +8,7 @@ class FirebasePhoneSignIn {
 
   Stream<String> call({required String phoneNumber, Duration? timeout}) async* {
     final response = _repository.signInWithPhoneNumber(
-        phoneNumber: phoneNumber,
-        timeout: timeout);
+        phoneNumber: phoneNumber, timeout: timeout);
 
     yield* response;
   }

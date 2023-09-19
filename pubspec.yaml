@@ -38,6 +38,7 @@ dependencies:
   google_sign_in: ^5.4.4
   cloud_storage:
     path: packages/cloud_storage
+  equatable: ^2.0.5
   
 dev_dependencies:
   flutter_test:
@@ -46,20 +47,19 @@ dev_dependencies:
   flutter_launcher_icons: ^0.12.0
 
 
-
-
-
 flutter:  
   uses-material-design: true
 
   assets:
     - assets/images/
 
+# Native splash screen configuration
 flutter_native_splash:
   image: "assets/images/Tennis.png"
   fullscreen: true
   color: "#E5E5E5"
 
+# Launcher icon configuration
 flutter_icons:
   android: true
   image_path: "assets/images/Tennis.png"
